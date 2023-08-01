@@ -1,44 +1,32 @@
 // Данные для графика
 let walkingSpeed = 4; // Скорость пешком (по умолчанию 4 км/ч)
-let scooterSpeed = 15; // Скорость на самокате (по умолчанию 15 км/ч)
+let scooterSpeed = 17; // Скорость на самокате (по умолчанию 17 км/ч)
 let distance = 10.1; // Расстояние (по умолчанию 10.1 км)
 
 // Функция для обновления графика
 function updateChart() {
-    let walkingTime = calculateTime(distance, walkingSpeed);
-    let scooterTime = calculateTime(distance, scooterSpeed);
-
-    let timeChartCtx = document.getElementById('timeChart').getContext('2d');
-
-    let timeChart = new Chart(timeChartCtx, {
+    // Отрисовка графика
+    let ctx = document.getElementById('myChart').getContext('2d');
+    let myChart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: ['Пешком', 'На самокате'],
             datasets: [{
                 label: 'Время',
-                data: [walkingTime, scooterTime],
-                backgroundColor: ['rgba(255, 99, 132, 0.8)', 'rgba(54, 162, 235, 0.8)'],
+                data: [calculateTime(distance, walkingSpeed), calculateTime(distance, scooterSpeed)],
+                backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
                 borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
                 borderWidth: 1
             }]
         },
         options: {
-            responsive: true,
             scales: {
                 y: {
-                    beginAtZero: true,
-                    ticks: {
-                        stepSize: 1
-                    },
-                    max: 350
+                    beginAtZero: true
                 }
             }
         }
     });
-
-    // Отображение времени на странице
-    document.getElementById('walkingTime').innerText = walkingTime;
-    document.getElementById('scooterTime').innerText = scooterTime;
 }
 
 // Функции для изменения скоростей с помощью стрелок

@@ -3,9 +3,16 @@
 <head>
     <title>Математический график</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        canvas {
+            max-width: 200px;
+            max-height: 200px;
+        }
+    </style>
 </head>
 <body>
     <h1>Математический график</h1>
+    <canvas id="myChart" width="200" height="200"></canvas>
 
     <h3>Скорости</h3>
     <div>
@@ -21,7 +28,7 @@
             <h4>На самокате</h4>
             <div>
                 <button onclick="decreaseScooterSpeed()">-</button>
-                <span id="scooterSpeedValue">15</span> км/ч
+                <span id="scooterSpeedValue">17</span> км/ч
                 <button onclick="increaseScooterSpeed()">+</button>
             </div>
         </div>
@@ -43,10 +50,6 @@
             <h4>На самокате</h4>
             <span id="scooterTime">0:00:00</span>
         </div>
-    </div>
-
-    <div>
-        <canvas id="timeChart" width="400" height="300"></canvas>
     </div>
 
     <script src="your_script.js"></script>
