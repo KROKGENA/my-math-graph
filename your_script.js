@@ -17,7 +17,7 @@ function updateChart() {
             datasets: [{
                 label: 'Время',
                 data: [walkingTime, scooterTime],
-                backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
+                backgroundColor: ['rgba(255, 99, 132, 0.8)', 'rgba(54, 162, 235, 0.8)'],
                 borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
                 borderWidth: 1
             }]
@@ -29,7 +29,8 @@ function updateChart() {
                     beginAtZero: true,
                     ticks: {
                         stepSize: 1
-                    }
+                    },
+                    max: 350
                 }
             }
         }
