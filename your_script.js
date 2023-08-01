@@ -5,14 +5,65 @@ let distance = 10.1; // Расстояние (по умолчанию 10.1 км)
 
 // Функция для обновления графика
 function updateChart() {
-    // Ваш код для обновления графика с новыми данными скоростей и расстояния
-    // ...
+    // Получаем элемент canvas, на котором будет отображаться график
+    let ctx = document.getElementById('myChart').getContext('2d');
 
-    // Перерисовка графика
-    // ...
+    // Расчет времени в часах, минутах и секундах для пешком и на самокате
+    let walkingTime = distance / walkingSpeed;
+    let scooterTime = distance / scooterSpeed;
 
-    // Расчет времени и отображение его на странице
-    calculateTime();
+    // Преобразование времени в формат "чч:мм:сс"
+    let formattedWalkingTime = formatTime(walkingTime);
+    let formattedScooterTime = formatTime(scooterTime);
+
+    // Отображение времени на странице
+    document.getElementById('walkingTime').innerText = formattedWalkingTime;
+    document.getElementById('scooterTime').innerText = formattedScooterTime;
+
+    // Создаем новый график с помощью библиотеки Chart.js
+    let myChart = new Chart(ctx, {
+        type: 'bar', // Можете использовать другой тип графика, если хотите
+        data: {
+            labels: ['Пешком', 'На самокате'], // Метки на оси X
+            datasets: [{
+                label: 'Время', // Название набора данных
+                data: [walkingTime, scooterTime], // Данные для графика (время пешком и на самокате)
+                backgroundColor: ['#FF6384', '#36A2EB'], // Цвета для столбцов графика
+                borderColor: '#000', // Цвет обводки столбцов
+                borderWidth: 1 // Ширина обводки столбцов
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true // Ось Y начинается с нуля
+                }
+            }
+        }
+    });
+}
+
+// Функция для расчета времени и отображения его на странице
+function calculateTime() {
+    // Расчет времени в часах, минутах и секундах для пешком и на самокате
+    let walkingTime = distance / walkingSpeed;
+    let scooterTime = distance / scooterSpeed;
+
+    // Преобразование времени в формат "чч:мм:сс"
+    let formattedWalkingTime = formatTime(walkingTime);
+    let formattedScooterTime = formatTime(scooterTime);
+
+    // Отображение времени на странице
+    document.getElementById('walkingTime').innerText = formattedWalkingTime;
+    document.getElementById('scooterTime').innerText = formattedScooterTime;
+}
+
+// Функция для форматирования времени в формат "чч:мм:сс"
+function formatTime(time) {
+    let hours = Math.floor(time);
+    let minutes = Math.floor((time - hours) * 60);
+    let seconds = Math.floor(((time - hours) * 60 - minutes) * 60);
+    return hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
 }
 
 // Функции для изменения скоростей с помощью стрелок
@@ -44,29 +95,6 @@ function decreaseScooterSpeed() {
 function updateDistance() {
     distance = parseFloat(document.getElementById('distanceInput').value);
     updateChart();
-}
-
-// Функция для расчета времени и отображения его на странице
-function calculateTime() {
-    // Расчет времени в часах, минутах и секундах для пешком и на самокате
-    let walkingTime = distance / walkingSpeed;
-    let scooterTime = distance / scooterSpeed;
-
-    // Преобразование времени в формат "чч:мм:сс"
-    let formattedWalkingTime = formatTime(walkingTime);
-    let formattedScooterTime = formatTime(scooterTime);
-
-    // Отображение времени на странице
-    document.getElementById('walkingTime').innerText = formattedWalkingTime;
-    document.getElementById('scooterTime').innerText = formattedScooterTime;
-}
-
-// Функция для форматирования времени в формат "чч:мм:сс"
-function formatTime(time) {
-    let hours = Math.floor(time);
-    let minutes = Math.floor((time - hours) * 60);
-    let seconds = Math.floor(((time - hours) * 60 - minutes) * 60);
-    return hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
 }
 
 // Вызов функции для обновления графика и расчета времени при загрузке страницы
