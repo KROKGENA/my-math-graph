@@ -1,7 +1,7 @@
 // Данные для графика
 let walkingSpeed = 4; // Скорость пешком (по умолчанию 4 км/ч)
 let scooterSpeed = 15; // Скорость на самокате (по умолчанию 15 км/ч)
-let distance = 10; // Расстояние (по умолчанию 10 км)
+let distance = 10.1; // Расстояние (по умолчанию 10.1 км)
 
 // Функция для обновления графика
 function updateChart() {
@@ -18,21 +18,25 @@ function updateChart() {
 // Функции для изменения скоростей с помощью стрелок
 function increaseWalkingSpeed() {
     walkingSpeed += 1;
+    document.getElementById('walkingSpeedValue').innerText = walkingSpeed;
     updateChart();
 }
 
 function decreaseWalkingSpeed() {
     walkingSpeed -= 1;
+    document.getElementById('walkingSpeedValue').innerText = walkingSpeed;
     updateChart();
 }
 
 function increaseScooterSpeed() {
     scooterSpeed += 1;
+    document.getElementById('scooterSpeedValue').innerText = scooterSpeed;
     updateChart();
 }
 
 function decreaseScooterSpeed() {
     scooterSpeed -= 1;
+    document.getElementById('scooterSpeedValue').innerText = scooterSpeed;
     updateChart();
 }
 
