@@ -1,15 +1,29 @@
 // Данные для графика
 let walkingSpeed = 4; // Скорость пешком (по умолчанию 4 км/ч)
 let scooterSpeed = 15; // Скорость на самокате (по умолчанию 15 км/ч)
-let distance = 40; // Расстояние (по умолчанию 40 км)
+let distance = 10.1; // Расстояние (по умолчанию 10.1 км)
 
 // Функция для обновления графика
 function updateChart() {
-    // Ваш код для обновления графика с новыми данными скоростей и расстояния
-    // ...
+    // Данные для графика
+    let walkingTime = distance / walkingSpeed;
+    let scooterTime = distance / scooterSpeed;
+
+    // Форматирование времени для отображения на графике
+    let formattedWalkingTime = formatTime(walkingTime);
+    let formattedScooterTime = formatTime(scooterTime);
+
+    // Обновление данных графика
+    walkingChart.data.datasets[0].data = [walkingTime];
+    scooterChart.data.datasets[0].data = [scooterTime];
+
+    // Обновление надписей на графике
+    walkingChart.data.labels = [formattedWalkingTime];
+    scooterChart.data.labels = [formattedScooterTime];
 
     // Перерисовка графика
-    // ...
+    walkingChart.update();
+    scooterChart.update();
 
     // Расчет времени и отображение его на странице
     calculateTime();
@@ -70,5 +84,7 @@ function formatTime(time) {
 }
 
 // Вызов функции для обновления графика и расчета времени при загрузке страницы
-updateChart();
-calculateTime();
+document.addEventListener('DOMContentLoaded', function () {
+    updateChart();
+    calculateTime();
+});
