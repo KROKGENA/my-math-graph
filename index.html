@@ -6,8 +6,6 @@
 </head>
 <body>
     <h1>Математический график</h1>
-    <canvas id="walkingChart" width="400" height="200"></canvas>
-    <canvas id="scooterChart" width="400" height="200"></canvas>
 
     <h3>Скорости</h3>
     <div>
@@ -23,7 +21,7 @@
             <h4>На самокате</h4>
             <div>
                 <button onclick="decreaseScooterSpeed()">-</button>
-                <span id="scooterSpeedValue">15</span> км/ч
+                <span id="scooterSpeedValue">17</span> км/ч
                 <button onclick="increaseScooterSpeed()">+</button>
             </div>
         </div>
@@ -46,6 +44,9 @@
             <span id="scooterTime">0:00:00</span>
         </div>
     </div>
+
+    <canvas id="walkingChart" width="400" height="200"></canvas>
+    <canvas id="scooterChart" width="400" height="200"></canvas>
 
     <script src="your_script.js"></script>
 </body>
