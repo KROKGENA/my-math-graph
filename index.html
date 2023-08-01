@@ -21,6 +21,8 @@
 
         canvas {
             margin: 10px;
+            width: 300px;
+            height: 100px;
         }
     </style>
 </head>
@@ -49,12 +51,12 @@
         </div>
 
         <h3>Расстояние (км)</h3>
-        <input type="number" id="distanceInput" value="10.1" step="0.1" onchange="updateDistance()">
+        <input type="number" id="distanceInput" value="40" step="0.1" onchange="updateDistance()">
     </div>
 
     <div id="charts">
-        <canvas id="walkingChart" width="300" height="150"></canvas>
-        <canvas id="scooterChart" width="300" height="150"></canvas>
+        <canvas id="walkingChart" width="300" height="100"></canvas>
+        <canvas id="scooterChart" width="300" height="100"></canvas>
     </div>
 
     <h3>Девочка на самокате</h3>
