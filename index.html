@@ -1,21 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Математическая задача и график</title>
-<h3>Девочка на самокате</h3>
-<img src="girl_scooter.png" alt="Девочка на самокате" width="200" height="200">
-
-    <!-- Подключение библиотеки Chart.js -->
+    <title>Математический график</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <h1>Математическая задача:</h1>
-    <p>Девочка идет домой со скоростью 4 км/ч. Сколько времени займет поездка на самокате, скорость которого 15 км/ч?</p>
-
-    <h2>График скорости:</h2>
+    <h1>Математический график</h1>
     <canvas id="myChart" width="400" height="200"></canvas>
 
-    <!-- Ваш JavaScript-код для создания графика будет подключен позже -->
+    <h3>Скорости</h3>
+    <div>
+        <div>
+            <h4>Пешком</h4>
+            <div>
+                <button onclick="decreaseWalkingSpeed()">-</button>
+                <span id="walkingSpeed">4</span> км/ч
+                <button onclick="increaseWalkingSpeed()">+</button>
+            </div>
+        </div>
+        <div>
+            <h4>На самокате</h4>
+            <div>
+                <button onclick="decreaseScooterSpeed()">-</button>
+                <span id="scooterSpeed">15</span> км/ч
+                <button onclick="increaseScooterSpeed()">+</button>
+            </div>
+        </div>
+    </div>
+
     <script src="your_script.js"></script>
 </body>
 </html>
