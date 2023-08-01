@@ -2,17 +2,17 @@
 <html>
 <head>
     <title>Математический график</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        canvas {
-            max-width: 200px;
-            max-height: 200px;
+        body {
+            font-size: 18px;
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <h1>Математический график</h1>
-    <canvas id="myChart" width="200" height="200"></canvas>
+    <canvas id="myChart" width="600" height="400"></canvas>
 
     <h3>Скорости</h3>
     <div>
@@ -28,17 +28,17 @@
             <h4>На самокате</h4>
             <div>
                 <button onclick="decreaseScooterSpeed()">-</button>
-                <span id="scooterSpeedValue">17</span> км/ч
+                <span id="scooterSpeedValue">15</span> км/ч
                 <button onclick="increaseScooterSpeed()">+</button>
             </div>
         </div>
     </div>
 
     <h3>Расстояние (км)</h3>
-    <input type="number" id="distanceInput" value="10.1" step="0.1" onchange="updateDistance()">
+    <input type="number" id="distanceInput" value="10.1" step="0.1">
 
     <h3>Девочка на самокате</h3>
-    <img src="girl_scooter.png" alt="Девочка на самокате" width="200" height="200">
+    <img src="girl_scooter.png" alt="Девочка на самокате" width="300" height="300">
 
     <h3>Время</h3>
     <div>
@@ -51,6 +51,8 @@
             <span id="scooterTime">0:00:00</span>
         </div>
     </div>
+
+    <button onclick="calculateTime()">Посчитать</button>
 
     <script src="your_script.js"></script>
 </body>
