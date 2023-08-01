@@ -1,6 +1,6 @@
 // Данные для графика
 let walkingSpeed = 4; // Скорость пешком (по умолчанию 4 км/ч)
-let scooterSpeed = 18; // Скорость на самокате (по умолчанию 18 км/ч)
+let scooterSpeed = 15; // Скорость на самокате (по умолчанию 15 км/ч)
 let distance = 10.1; // Расстояние (по умолчанию 10.1 км)
 
 // Функция для обновления графика
@@ -8,18 +8,17 @@ function updateChart() {
     let walkingTime = calculateTime(distance, walkingSpeed);
     let scooterTime = calculateTime(distance, scooterSpeed);
 
-    let walkingChartCtx = document.getElementById('walkingChart').getContext('2d');
-    let scooterChartCtx = document.getElementById('scooterChart').getContext('2d');
+    let timeChartCtx = document.getElementById('timeChart').getContext('2d');
 
-    let walkingChart = new Chart(walkingChartCtx, {
+    let timeChart = new Chart(timeChartCtx, {
         type: 'bar',
         data: {
-            labels: ['Время (пешком)'],
+            labels: ['Пешком', 'На самокате'],
             datasets: [{
-                label: 'Время (пешком)',
-                data: [walkingTime],
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
+                label: 'Время',
+                data: [walkingTime, scooterTime],
+                backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
+                borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
                 borderWidth: 1
             }]
         },
@@ -27,33 +26,18 @@ function updateChart() {
             responsive: true,
             scales: {
                 y: {
-                    beginAtZero: true
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 1
+                    }
                 }
             }
         }
     });
 
-    let scooterChart = new Chart(scooterChartCtx, {
-        type: 'bar',
-        data: {
-            labels: ['Время (на самокате)'],
-            datasets: [{
-                label: 'Время (на самокате)',
-                data: [scooterTime],
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                borderColor: 'rgba(54, 162, 235, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
+    // Отображение времени на странице
+    document.getElementById('walkingTime').innerText = walkingTime;
+    document.getElementById('scooterTime').innerText = scooterTime;
 }
 
 // Функции для изменения скоростей с помощью стрелок
