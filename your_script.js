@@ -85,6 +85,54 @@ function formatTime(time) {
 
 // Вызов функции для обновления графика и расчета времени при загрузке страницы
 document.addEventListener('DOMContentLoaded', function () {
+    // Создание графиков
+    let walkingChartCtx = document.getElementById('walkingChart').getContext('2d');
+    let scooterChartCtx = document.getElementById('scooterChart').getContext('2d');
+
+    let walkingChart = new Chart(walkingChartCtx, {
+        type: 'bar',
+        data: {
+            labels: [''],
+            datasets: [{
+                label: 'Время (пешком)',
+                data: [],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    let scooterChart = new Chart(scooterChartCtx, {
+        type: 'bar',
+        data: {
+            labels: [''],
+            datasets: [{
+                label: 'Время (на самокате)',
+                data: [],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
     updateChart();
     calculateTime();
 });
