@@ -1,36 +1,39 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Математический график</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
-    <h1>Математический график</h1>
-    <canvas id="myChart" width="400" height="200"></canvas>
-
-    <h3>Скорости</h3>
+...
+<h3>Скорости</h3>
+<div>
     <div>
+        <h4>Пешком</h4>
         <div>
-            <h4>Пешком</h4>
-            <div>
-                <button onclick="decreaseWalkingSpeed()">-</button>
-                <span id="walkingSpeed">4</span> км/ч
-                <button onclick="increaseWalkingSpeed()">+</button>
-            </div>
-        </div>
-        <div>
-            <h4>На самокате</h4>
-            <div>
-                <button onclick="decreaseScooterSpeed()">-</button>
-                <span id="scooterSpeed">15</span> км/ч
-                <button onclick="increaseScooterSpeed()">+</button>
-            </div>
+            <button onclick="decreaseWalkingSpeed()">-</button>
+            <span id="walkingSpeed">4</span> км/ч
+            <button onclick="increaseWalkingSpeed()">+</button>
         </div>
     </div>
+    <div>
+        <h4>На самокате</h4>
+        <div>
+            <button onclick="decreaseScooterSpeed()">-</button>
+            <span id="scooterSpeed">15</span> км/ч
+            <button onclick="increaseScooterSpeed()">+</button>
+        </div>
+    </div>
+</div>
 
-    <h3>Девочка на самокате</h3>
-    <img src="girl_scooter.png" alt="Девочка на самокате" width="200" height="200">
+<h3>Расстояние (км)</h3>
+<input type="number" id="distanceInput" value="10" step="0.1" onchange="updateDistance()">
 
-    <script src="your_script.js"></script>
-</body>
-</html>
+<h3>Девочка на самокате</h3>
+<img src="girl_scooter.png" alt="Девочка на самокате" width="200" height="200">
+
+<h3>Время</h3>
+<div>
+    <div>
+        <h4>Пешком</h4>
+        <span id="walkingTime">0:00:00</span>
+    </div>
+    <div>
+        <h4>На самокате</h4>
+        <span id="scooterTime">0:00:00</span>
+    </div>
+</div>
+...

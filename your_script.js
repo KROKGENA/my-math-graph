@@ -1,30 +1,18 @@
 // Данные для графика
 let walkingSpeed = 4; // Скорость пешком (по умолчанию 4 км/ч)
 let scooterSpeed = 15; // Скорость на самокате (по умолчанию 15 км/ч)
+let distance = 10; // Расстояние (по умолчанию 10 км)
 
 // Функция для обновления графика
 function updateChart() {
-    const ctx = document.getElementById('myChart').getContext('2d');
-    const myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Пешком', 'Самокат'],
-            datasets: [{
-                label: 'Скорость (км/ч)',
-                data: [walkingSpeed, scooterSpeed],
-                backgroundColor: ['rgba(255, 99, 132, 0.5)', 'rgba(54, 162, 235, 0.5)'],
-                borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
+    // Ваш код для обновления графика с новыми данными скоростей и расстояния
+    // ...
+
+    // Перерисовка графика
+    // ...
+
+    // Расчет времени и отображение его на странице
+    calculateTime();
 }
 
 // Функции для изменения скоростей с помощью стрелок
@@ -48,5 +36,35 @@ function decreaseScooterSpeed() {
     updateChart();
 }
 
-// Вызов функции для обновления графика при загрузке страницы
+// Функция для изменения расстояния
+function updateDistance() {
+    distance = parseFloat(document.getElementById('distanceInput').value);
+    updateChart();
+}
+
+// Функция для расчета времени и отображения его на странице
+function calculateTime() {
+    // Расчет времени в часах, минутах и секундах для пешком и на самокате
+    let walkingTime = distance / walkingSpeed;
+    let scooterTime = distance / scooterSpeed;
+
+    // Преобразование времени в формат "чч:мм:сс"
+    let formattedWalkingTime = formatTime(walkingTime);
+    let formattedScooterTime = formatTime(scooterTime);
+
+    // Отображение времени на странице
+    document.getElementById('walkingTime').innerText = formattedWalkingTime;
+    document.getElementById('scooterTime').innerText = formattedScooterTime;
+}
+
+// Функция для форматирования времени в формат "чч:мм:сс"
+function formatTime(time) {
+    let hours = Math.floor(time);
+    let minutes = Math.floor((time - hours) * 60);
+    let seconds = Math.floor(((time - hours) * 60 - minutes) * 60);
+    return hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
+}
+
+// Вызов функции для обновления графика и расчета времени при загрузке страницы
 updateChart();
+calculateTime();
